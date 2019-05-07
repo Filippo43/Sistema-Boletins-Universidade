@@ -6,18 +6,17 @@ xml2js = require('xml2js');
 
 //Constant
 var xmlConsultaPath = "./XML/consultaStatus.xml";
+global.xml = " "
+global.abc = 'oi'
 
 //Função que atualiza o xml de consulta
-function getConsulta(xmlPath, cpf)
+function getConsulta(xmlPath, cpf,callback)
 {
-
-        var xml = "branco"
-
         //Trazendo o conteúdo do arquivo
         fs.readFile(xmlPath, "utf-8", function(err, data) 
         {
           //Caso de erro
-          if (err) console.log(err);
+          if (err) callback(err,null)
 
           //Mostra o conteúdo do arquivo
           //console.log(data);
@@ -27,7 +26,7 @@ function getConsulta(xmlPath, cpf)
           {
 
             //Caso de error
-            if (err) console.log(err);
+            if (err) callback(err,null)
 
             //Mostra o resultado do parses
             //console.log(result);
@@ -35,12 +34,17 @@ function getConsulta(xmlPath, cpf)
             var json = result;
 
             //Alterando valores do XML
+            
             json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = cpf;
 
             //Cria um builder object e converte o json para xml
             var builder = new xml2js.Builder();
+            
             xml = builder.buildObject(json);
+            
 
+            
+            //console.log(xml)
             //xml = xml.replace(/(\r\n|\n|\r)/gm,"");
 
             //Grava o arquivo
@@ -52,15 +56,20 @@ function getConsulta(xmlPath, cpf)
              console.log("successfully update xml");
             
             });*/
-
+            
+            return callback(null,xml)
             console.log("successfully update xml");
+           
+            
 
-            //return xml;
-
-          });
+          
+            });
+            return xml;
         });
 
-      return xml;
+        return xml
+        
+      
 
 }
 
@@ -103,18 +112,32 @@ function getConn(connName){
     return client;
 }
 
-/*------------------------------- CODE --------------------------------*/
+/------------------------------- CODE --------------------------------/
 
 // Create a java client socket.
-//var client = getConn('Node');
+var client = getConn('Node');
 
-var consulta = getConsulta(xmlConsultaPath, "11376467720");
+var consulta = getConsulta(xmlConsultaPath, "11376467720", function(err,data){
+    if(err) console.log(err)
+    else
+    console.log(data);
+    
+    client.write(data);
 
-console.log(consulta);
+    //return data;
+});
+
+consulta = consulta.toString();
+consulta = consulta.replace(/(\r\n|\n|\r)/gm,"");
+
+
+//console.log("a data:" + data);
+
+
 
 // Create node client socket.
-//var nodeClient = getConn('Node');
+//var nodeClient = getConn('Connection');
 
-//client.write(consulta);
+
 
 //nodeClient.write('Node is more better than java. ');

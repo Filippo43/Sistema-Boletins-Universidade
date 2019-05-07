@@ -1,5 +1,12 @@
 // Import net module.
 var net = require('net');
+var fs = require('fs'),
+parseString = require('xml2js').parseString,
+xml2js = require('xml2js');
+var x = require('libxmljs');
+
+var xsdRequisicao = "./XML/requisicao.xsd";
+
 
 // Create and return a net.Server object, the function will be invoked when client connect to this server.
 var server = net.createServer(function(client) {
@@ -18,6 +25,25 @@ var server = net.createServer(function(client) {
 
         // Server send data back to client use client net.Socket object.
         client.end('Server received data : ' + data + ', send back to client data size : ' + client.bytesWritten);
+
+        var requisicao = data;
+
+        // Valida a requisição recebida.
+        //Trazendo o conteúdo do arquivo
+        fs.readFile(xsdRequisicao, "utf-8", function(err, data) 
+        {
+          //Caso de erro
+          if (err) callback(err,null)
+
+          var xsdDoc = x.parseString(data);
+          var xmlDoc = x.parseString(requisicao);
+
+          var result = xmlDoc.validate(xsdDoc);
+
+          console.log ("XML Validado!");
+
+        });
+
     });
 
     // When client send data complete.
