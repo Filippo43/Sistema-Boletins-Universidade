@@ -44,18 +44,18 @@ function getConsulta(xmlPath, cpf,callback)
             
 
             
-            //console.log(xml)
-            //xml = xml.replace(/(\r\n|\n|\r)/gm,"");
+            console.log(xml)
+            xml = xml.replace(/(\r\n|\n|\r)/gm,"");
 
             //Grava o arquivo
-            /*fs.writeFile(xmlPath, xml, function(err, data) 
+            fs.writeFile(xmlPath, xml, function(err, data)
             {
              //Caso de error
              if (err) console.log(err);
 
              console.log("successfully update xml");
             
-            });*/
+            });
             
             return callback(null,xml)
             console.log("successfully update xml");

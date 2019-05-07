@@ -35,8 +35,8 @@ var server = net.createServer(function(client) {
           //Caso de erro
           if (err) callback(err,null)
 
-          var xsdDoc = x.parseString(data);
-          var xmlDoc = x.parseString(requisicao);
+          var xsdDoc = x.parseXmlString(data);
+          var xmlDoc = x.parseXmlString(requisicao);
 
           var result = xmlDoc.validate(xsdDoc);
 
