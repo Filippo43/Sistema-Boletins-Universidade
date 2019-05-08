@@ -30,7 +30,7 @@ var server = net.createServer(function(client) {
 
         // Valida a requisição recebida.
         //Trazendo o conteúdo do arquivo
-        fs.readFile(xsdRequisicao, "utf-8", function(err, data) 
+        fs.readFile(xsdRequisicao, "utf-8", function(err, data)
         {
           //Caso de erro
           if (err) callback(err,null)
@@ -41,6 +41,31 @@ var server = net.createServer(function(client) {
           var result = xmlDoc.validate(xsdDoc);
 
           console.log ("XML Validado!");
+
+          var metodo = "";
+
+            parseString(requisicao, function(err, result)
+            {
+                //Caso de error
+                if (err) callback(err,null)
+
+                //Mostra o resultado do parses
+                //console.log(result);
+
+                var json = result;
+
+                metodo = json.requisicao.metodo[0].nome[0];
+                console.log ("executar o metodo "+metodo+"()");
+
+                if(metodo=="submeter")
+                {
+
+                }
+                else
+                {
+
+                }
+            });
 
         });
 
