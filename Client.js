@@ -103,13 +103,15 @@ function getSubmeter(xmlPath,xmlHistorico,callback)
 
             var json = result;
 
+            //console.log(xmlHistoricoSub)
+
             //Alterando valores do XML (Já insere o CDATA sozinho se aplicável)
             json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = xmlHistoricoSub;
 
            
             xml = builder.buildObject(json);
 
-            console.log(xml)
+            //console.log(xml)
 
             return callback(null,xml)
             console.log("successfully update xml!\n");

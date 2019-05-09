@@ -6,6 +6,7 @@ xml2js = require('xml2js');
 var x = require('libxmljs');
 
 var xsdRequisicao = "./XML/requisicao.xsd";
+var xsdHistorico = "./XML/historico.xsd";
 
 
 // Create and return a net.Server object, the function will be invoked when client connect to this server.
@@ -24,7 +25,7 @@ var server = net.createServer(function(client) {
         console.log('Receive client send data : ' + data + ', data size : ' + client.bytesRead);
 
         // Server send data back to client use client net.Socket object.
-        client.end('Server received data : ' + data + ', send back to client data size : ' + client.bytesWritten);
+        //client.end('Server received data : ' + data + ', send back to client data size : ' + client.bytesWritten);
 
         var requisicao = data;
 
@@ -43,7 +44,7 @@ var server = net.createServer(function(client) {
           console.log ("XML Validado? " + result);
 
           var metodo = "";
-
+          var valor = "";
             parseString(requisicao, function(err, result)
             {
                 //Caso de error
@@ -56,16 +57,59 @@ var server = net.createServer(function(client) {
 
                 metodo = json.requisicao.metodo[0].nome[0];
                 console.log ("executar o metodo "+metodo+"()");
-
-                if(metodo=="submeter")
-                {
-
-                }
-                else
-                {
-
-                }
+                valor = json.requisicao.metodo[0].parametros[0].parametro[0].valor[0];
             });
+            if(metodo=="submeter")
+            {
+                //console.log (valor);
+                fs.readFile(xsdHistorico, "utf-8", function(err, data)
+                {
+                    //Caso de erro
+                    if (err) callback(err,null)
+
+                    xsdDoc = x.parseXmlString(data);
+                    xmlDoc = x.parseXmlString(valor);
+
+                    result = xmlDoc.validate(xsdDoc);
+
+                    console.log ("XML historico Validado? " + result);
+                    //result = false;
+                    if(!result)
+                    {
+                        client.end("<![CDATA[<resposta><retorno>1</retorno></resposta>]]>");
+                    }
+
+                    parseString(valor, function(err, result)
+                    {
+                        //Caso de error
+                        if (err) callback(err,null)
+
+                        var json = result;
+
+                        var cpf = json.HistoricoEscolar.cpf[0];
+
+                        //imprimi o cpf pra ver se esta certo
+                        //console.log (cpf);
+
+                        var xmlPath = "./XML/"+cpf+".xml"
+                        fs.writeFile(xmlPath, valor, function(err, data)
+                        {
+                            //Caso de error
+                            if (err) console.log(err);
+
+                            console.log("successfully update xml");
+
+                        });
+
+                        client.end("<![CDATA[<resposta><retorno>0</retorno></resposta>]]>");
+
+                    });
+                });
+            }
+            else
+            {
+
+            }
 
         });
 
