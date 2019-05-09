@@ -12,7 +12,6 @@ var builder = new xml2js.Builder({
 });
 
 
-
 //Função que atualiza o xml de consulta
 function getConsulta(xmlPath, cpf,callback)
 {
@@ -71,7 +70,6 @@ function getConsulta(xmlPath, cpf,callback)
             return xml;
         });
 
-        return xml
 }
 
 //Função para submeter boletim
@@ -175,8 +173,9 @@ var consulta = getConsulta(xmlConsultaPath, "00000000002", function(err,data){
     
     client.write(data);
 
-    //return data;
-});*/
+    return data;
+});
+*/
 
 var xmlHistoricoPath = "./XML/historico-ex.xml";
 

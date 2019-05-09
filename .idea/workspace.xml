@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="26695826-82e3-46c0-be9f-8bf30bd3af7e" name="Default Changelist" comment="no Client adicionei a opçao para submeter o boletim, e no server leio qual o metodo a ser executado">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="26695826-82e3-46c0-be9f-8bf30bd3af7e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServerSocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XML/historico-ex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/XML/historico-ex.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ServerSocket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="103" column="65" selection-start-line="103" selection-start-column="65" selection-end-line="103" selection-end-column="65" />
+            <state relative-caret-position="459">
+              <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="177" column="2" selection-start-line="177" selection-start-column="2" selection-end-line="177" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -32,15 +40,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-374">
-              <caret line="8" column="42" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -105,8 +104,8 @@
         <option value="$PROJECT_DIR$/XML/consultaStatus.xml" />
         <option value="$PROJECT_DIR$/XML/historico-ex.xml" />
         <option value="$PROJECT_DIR$/XML/submeter.xml" />
-        <option value="$PROJECT_DIR$/Client.js" />
         <option value="$PROJECT_DIR$/ServerSocket.js" />
+        <option value="$PROJECT_DIR$/Client.js" />
       </list>
     </option>
   </component>
@@ -210,7 +209,7 @@
       <workItem from="1557249182430" duration="10961000" />
       <workItem from="1557270117170" duration="7747000" />
       <workItem from="1557354039063" duration="13715000" />
-      <workItem from="1557410833944" duration="2374000" />
+      <workItem from="1557410833944" duration="4420000" />
     </task>
     <task id="LOCAL-00001" summary="instalei o libxmljs com o comando npm install libxmljs no terminal">
       <created>1557252010127</created>
@@ -233,11 +232,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557275532324</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="metodo submeter pronto retorna 0 pra sucesso e 1 se xml invalido">
+      <created>1557413512183</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1557413512183</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40297000" />
+    <option name="totallyTimeSpent" value="42343000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -349,7 +355,8 @@
     <MESSAGE value="instalei o libxmljs com o comando npm install libxmljs no terminal" />
     <MESSAGE value="Correção ao chamar parseXmlString" />
     <MESSAGE value="no Client adicionei a opçao para submeter o boletim, e no server leio qual o metodo a ser executado" />
-    <option name="LAST_COMMIT_MESSAGE" value="no Client adicionei a opçao para submeter o boletim, e no server leio qual o metodo a ser executado" />
+    <MESSAGE value="metodo submeter pronto retorna 0 pra sucesso e 1 se xml invalido" />
+    <option name="LAST_COMMIT_MESSAGE" value="metodo submeter pronto retorna 0 pra sucesso e 1 se xml invalido" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Client and Server Samples/ServerSocket.js">
@@ -389,10 +396,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML/submeter.xml">
+    <entry file="file://$PROJECT_DIR$/XML/historico-ex.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
+          <caret column="72" lean-forward="true" selection-start-column="56" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XML/resposta-ex.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -403,34 +417,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML/historico-ex.xml">
+    <entry file="file://$PROJECT_DIR$/XML/submeter.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="72" lean-forward="true" selection-start-column="56" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="42" />
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/XML/00000000002.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML/resposta-ex.xml">
+    <entry file="file://$PROJECT_DIR$/ServerSocket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="11" />
+        <state relative-caret-position="459">
+          <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ServerSocket.js">
+    <entry file="file://$PROJECT_DIR$/Client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="103" column="65" selection-start-line="103" selection-start-column="65" selection-end-line="103" selection-end-column="65" />
+        <state relative-caret-position="408">
+          <caret line="177" column="2" selection-start-line="177" selection-start-column="2" selection-end-line="177" selection-end-column="2" />
         </state>
       </provider>
     </entry>

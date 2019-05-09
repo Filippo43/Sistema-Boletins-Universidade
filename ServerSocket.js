@@ -108,7 +108,20 @@ var server = net.createServer(function(client) {
             }
             else
             {
+                console.log (valor);
+                //valor = "11122233344"
+                var cpfPath = "./XML/"+valor+".xml";
+                fs.readFile(cpfPath, "utf-8", function(err, data)
+                {
+                    //Caso de erro
+                    if (err)
+                    {
+                        client.end("<![CDATA[<resposta><retorno>0</retorno></resposta>]]>");
+                        //callback(err,null)
+                    }
 
+                    client.end("<![CDATA[<resposta><retorno>2</retorno></resposta>]]>");
+                });
             }
 
         });
