@@ -7,8 +7,11 @@ xml2js = require('xml2js');
 //Constant
 var xmlConsultaPath = "./XML/consultaStatus.xml";
 var xmlSubmeterPath = "./XML/submeter.xml";
-global.xml = " "
-global.abc = 'oi'
+var builder = new xml2js.Builder({
+    cdata: true
+});
+
+
 
 //Função que atualiza o xml de consulta
 function getConsulta(xmlPath, cpf,callback)
@@ -39,7 +42,7 @@ function getConsulta(xmlPath, cpf,callback)
             json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = cpf;
 
             //Cria um builder object e converte o json para xml
-            var builder = new xml2js.Builder();
+           // var builder = new xml2js.Builder();
             
             xml = builder.buildObject(json);
             
@@ -71,91 +74,50 @@ function getConsulta(xmlPath, cpf,callback)
         return xml
 }
 
+//Função para submeter boletim
 function getSubmeter(xmlPath,xmlHistorico,callback)
 {
     var xmlHistoricoSub = "";
+
+    //Le o arquivo do historico
     fs.readFile(xmlHistorico, "utf-8", function(err, data)
     {
         //Caso de erro
         if (err) callback(err,null)
 
-        parseString(data, function(err, result)
-        {
-
-            //Caso de error
-            if (err) callback(err,null)
-
-            //Mostra o resultado do parses
-            //console.log(result);
-
-            var json = result;
-
-            //Cria um builder object e converte o json para xml
-            var builder = new xml2js.Builder();
-
-            xmlHistoricoSub = builder.buildObject(json);
-
-            //console.log(xmlHistoricoSub)
-            xmlHistoricoSub = xmlHistoricoSub.replace(/(\r\n|\n|\r)/gm,"");
-        });
+        xmlHistoricoSub = data;
     });
 
-    //Trazendo o conteúdo do arquivo
+    //Inserindo o histórico no xml de submeter
     fs.readFile(xmlPath, "utf-8", function(err, data)
     {
         //Caso de erro
         if (err) callback(err,null)
 
-        //Mostra o conteúdo do arquivo
-        //console.log(data);
-
-        //Realiza o parser do xml
+        //Realiza o parser do xml para json
         parseString(data, function(err, result)
         {
 
             //Caso de error
             if (err) callback(err,null)
 
-            //Mostra o resultado do parses
-            //console.log(result);
-
             var json = result;
 
-            //Alterando valores do XML
+            //Alterando valores do XML (Já insere o CDATA sozinho se aplicável)
+            json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = xmlHistoricoSub;
 
-            json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = "["+xmlHistoricoSub+"]";
-
-            //Cria um builder object e converte o json para xml
-            var builder = new xml2js.Builder();
-
+           
             xml = builder.buildObject(json);
 
-
-
             console.log(xml)
-            xml = xml.replace(/(\r\n|\n|\r)/gm,"");
-
-            //Grava o arquivo
-            fs.writeFile(xmlPath, xml, function(err, data)
-            {
-                //Caso de error
-                if (err) console.log(err);
-
-                console.log("successfully update xml");
-
-            });
 
             return callback(null,xml)
-            console.log("successfully update xml");
-
-
-
+            console.log("successfully update xml!\n");
 
         });
         return xml;
     });
 
-    return xml
 }
 
 // This function create and return a net.Socket object to represent TCP client.
@@ -212,36 +174,16 @@ var consulta = getConsulta(xmlConsultaPath, "00000000002", function(err,data){
     client.write(data);
 
     //return data;
-});
-
-consulta = consulta.toString();
-consulta = consulta.replace(/(\r\n|\n|\r)/gm,"");
-*/
-
+});*/
 
 var xmlHistoricoPath = "./XML/historico-ex.xml";
 
 var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
     if(err) console.log(err)
     else
-        console.log(data);
+       console.log(data);
 
     client.write(data);
 
-    //return data;
+    return data;
 });
-
-submeter = submeter.toString();
-submeter = submeter.replace(/(\r\n|\n|\r)/gm,"");
-
-
-//console.log("a data:" + data);
-
-
-
-// Create node client socket.
-//var nodeClient = getConn('Connection');
-
-
-
-//nodeClient.write('Node is more better than java. ');

@@ -1,13 +1,21 @@
 {
   "name": "package",
   "version": "1.0.0",
-  "description": "",
+  "description": "Atividade da Disciplina Tópicos Especiais em Banco de Dados sobre Submissão e Consulta de Boletins de uma Universidade simulando inscrições para uma Pós-Graduação.",
   "main": "Client (Test).js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Filippo43/Sistema-Boletins-Universidade.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Filippo43/Sistema-Boletins-Universidade/issues"
+  },
+  "homepage": "https://github.com/Filippo43/Sistema-Boletins-Universidade#readme",
   "dependencies": {
     "libxmljs": "^0.19.5",
     "xml2js": "^0.4.19"

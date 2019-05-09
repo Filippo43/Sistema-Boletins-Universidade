@@ -40,7 +40,7 @@ var server = net.createServer(function(client) {
 
           var result = xmlDoc.validate(xsdDoc);
 
-          console.log ("XML Validado!");
+          console.log ("XML Validado? " + result);
 
           var metodo = "";
 
