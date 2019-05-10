@@ -56,7 +56,7 @@ var server = net.createServer(function(client) {
                 var json = result;
 
                 metodo = json.requisicao.metodo[0].nome[0];
-                console.log ("executar o metodo "+metodo+"()");
+                console.log ("executar o metodo " + metodo + "()");
                 valor = json.requisicao.metodo[0].parametros[0].parametro[0].valor[0];
             });
             if(metodo=="submeter")
@@ -67,7 +67,7 @@ var server = net.createServer(function(client) {
                     //Caso de erro
                     if (err)
                     {
-                        client.end("<![CDATA[<resposta><retorno>3</retorno></resposta>]]>");
+                        client.end("<resposta>\n   <retorno>3</retorno>\n</resposta>");
                         callback(err,null)
                     }
 
@@ -78,7 +78,7 @@ var server = net.createServer(function(client) {
 
                     console.log ("XML historico Validado? " + result);
                     //result = false;
-                    if(!result) client.end("<![CDATA[<resposta><retorno>1</retorno></resposta>]]>");
+                    if(!result) client.end("<resposta>\n   <retorno>1</retorno>\n</resposta>");
 
                     parseString(valor, function(err, result)
                     {
@@ -102,8 +102,8 @@ var server = net.createServer(function(client) {
 
                         });
 
-                        client.end("<![CDATA[<resposta><retorno>0</retorno></resposta>]]>");
-
+                        client.end("<resposta>\n   <retorno>0</retorno>\n</resposta>");
+                       
                     });
                 });
             }
@@ -112,18 +112,26 @@ var server = net.createServer(function(client) {
                 console.log (valor);
                 //valor = "11122233344"
                 var cpfPath = "./XML/"+valor+".xml";
-                fs.readFile(cpfPath, "utf-8", function(err, data)
+
+                if (parseInt(valor, 10) < 5)
                 {
+                    client.end("<resposta>\n   <retorno>" + parseInt(valor,10) + "</retorno>\n</resposta>");
+                }
+                else
+                {
+                    fs.readFile(cpfPath, "utf-8", function(err, data)
+                    {
                     //Caso de erro
                     if (err)
                     {
-                        client.end("<![CDATA[<resposta><retorno>0</retorno></resposta>]]>");
+                        client.end("<resposta>\n   <retorno>0</retorno>\n</resposta>");
                         return;
                         //callback(err,null)
                     }
 
-                    client.end("<![CDATA[<resposta><retorno>2</retorno></resposta>]]>");
-                });
+                    client.end("<resposta>\n   <retorno>2</retorno>\n</resposta>");
+                    });
+                }
             }
 
         });

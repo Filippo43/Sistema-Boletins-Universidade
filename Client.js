@@ -7,9 +7,7 @@ xml2js = require('xml2js');
 //Constant
 var xmlConsultaPath = "./XML/consultaStatus.xml";
 var xmlSubmeterPath = "./XML/submeter.xml";
-var builder = new xml2js.Builder({
-    cdata: true
-});
+
 
 
 //Função que atualiza o xml de consulta
@@ -41,7 +39,7 @@ function getConsulta(xmlPath, cpf,callback)
             json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = cpf;
 
             //Cria um builder object e converte o json para xml
-           // var builder = new xml2js.Builder();
+            var builder = new xml2js.Builder();
             
             xml = builder.buildObject(json);
             
@@ -106,7 +104,10 @@ function getSubmeter(xmlPath,xmlHistorico,callback)
             //Alterando valores do XML (Já insere o CDATA sozinho se aplicável)
             json.requisicao.metodo[0].parametros[0].parametro[0].valor[0] = xmlHistoricoSub;
 
-           
+            var builder = new xml2js.Builder({
+                cdata: true
+            });
+
             xml = builder.buildObject(json);
 
             //console.log(xml)
@@ -166,7 +167,21 @@ var client = getConn('Node');
 
 //comente o subemeter para consultar e o cunsultar para submeter
 
-var consulta = getConsulta(xmlConsultaPath, "00000000002", function(err,data){
+var xmlHistoricoPath = "./XML/historico-ex.xml";
+
+/*var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
+    if(err) console.log(err)
+    else
+       console.log(data);
+
+    client.write(data);
+
+    return data;
+});*/
+
+//var client = getConn('consulta');
+
+var consulta = getConsulta(xmlConsultaPath, "00000000006", function(err,data){
     if(err) console.log(err)
     else
     console.log(data);
@@ -176,16 +191,4 @@ var consulta = getConsulta(xmlConsultaPath, "00000000002", function(err,data){
     return data;
 });
 
-/*
-var xmlHistoricoPath = "./XML/historico-ex.xml";
 
-var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
-    if(err) console.log(err)
-    else
-       console.log(data);
-
-    client.write(data);
-
-    return data;
-});
-*/
