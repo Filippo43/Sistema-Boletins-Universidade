@@ -165,7 +165,7 @@ function getConn(connName){
 var client = getConn('Node');
 
 //comente o subemeter para consultar e o cunsultar para submeter
-/*
+
 var consulta = getConsulta(xmlConsultaPath, "00000000002", function(err,data){
     if(err) console.log(err)
     else
@@ -175,8 +175,8 @@ var consulta = getConsulta(xmlConsultaPath, "00000000002", function(err,data){
 
     return data;
 });
-*/
 
+/*
 var xmlHistoricoPath = "./XML/historico-ex.xml";
 
 var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
@@ -188,3 +188,4 @@ var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
 
     return data;
 });
+*/

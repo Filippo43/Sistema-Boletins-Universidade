@@ -17,20 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ServerSocket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
+            <state relative-caret-position="146">
+              <caret line="112" column="18" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="177" column="2" selection-start-line="177" selection-start-column="2" selection-end-line="177" selection-end-column="2" />
+            <state relative-caret-position="1183">
+              <caret line="175" column="16" lean-forward="true" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -96,6 +96,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -104,8 +105,8 @@
         <option value="$PROJECT_DIR$/XML/consultaStatus.xml" />
         <option value="$PROJECT_DIR$/XML/historico-ex.xml" />
         <option value="$PROJECT_DIR$/XML/submeter.xml" />
-        <option value="$PROJECT_DIR$/ServerSocket.js" />
         <option value="$PROJECT_DIR$/Client.js" />
+        <option value="$PROJECT_DIR$/ServerSocket.js" />
       </list>
     </option>
   </component>
@@ -209,7 +210,9 @@
       <workItem from="1557249182430" duration="10961000" />
       <workItem from="1557270117170" duration="7747000" />
       <workItem from="1557354039063" duration="13715000" />
-      <workItem from="1557410833944" duration="4420000" />
+      <workItem from="1557410833944" duration="4751000" />
+      <workItem from="1557437255348" duration="744000" />
+      <workItem from="1557446697249" duration="2305000" />
     </task>
     <task id="LOCAL-00001" summary="instalei o libxmljs com o comando npm install libxmljs no terminal">
       <created>1557252010127</created>
@@ -239,11 +242,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557413512183</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="consultaStatus mas so envia 0 se nao tiver o cpf e 2 se tiver">
+      <created>1557415362171</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557415362171</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42343000" />
+    <option name="totallyTimeSpent" value="45723000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -256,7 +266,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -356,7 +365,8 @@
     <MESSAGE value="Correção ao chamar parseXmlString" />
     <MESSAGE value="no Client adicionei a opçao para submeter o boletim, e no server leio qual o metodo a ser executado" />
     <MESSAGE value="metodo submeter pronto retorna 0 pra sucesso e 1 se xml invalido" />
-    <option name="LAST_COMMIT_MESSAGE" value="metodo submeter pronto retorna 0 pra sucesso e 1 se xml invalido" />
+    <MESSAGE value="consultaStatus mas so envia 0 se nao tiver o cpf e 2 se tiver" />
+    <option name="LAST_COMMIT_MESSAGE" value="consultaStatus mas so envia 0 se nao tiver o cpf e 2 se tiver" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Client and Server Samples/ServerSocket.js">
@@ -389,6 +399,27 @@
     <entry file="file://$PROJECT_DIR$/XML/requisicao.xsd">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/XML/resposta-ex.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XML/submeter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XML/consultaStatus.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="185" selection-start-column="185" selection-end-column="185" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/XML/edited-test.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -403,41 +434,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML/resposta-ex.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/XML/consultaStatus.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="185" selection-start-column="185" selection-end-column="185" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/XML/submeter.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/XML/00000000002.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ServerSocket.js">
+    <entry file="file://$PROJECT_DIR$/Client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
+        <state relative-caret-position="1183">
+          <caret line="175" column="16" lean-forward="true" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client.js">
+    <entry file="file://$PROJECT_DIR$/ServerSocket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="177" column="2" selection-start-line="177" selection-start-column="2" selection-end-line="177" selection-end-column="2" />
+        <state relative-caret-position="146">
+          <caret line="112" column="18" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
         </state>
       </provider>
     </entry>

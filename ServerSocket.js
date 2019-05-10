@@ -65,7 +65,11 @@ var server = net.createServer(function(client) {
                 fs.readFile(xsdHistorico, "utf-8", function(err, data)
                 {
                     //Caso de erro
-                    if (err) callback(err,null)
+                    if (err)
+                    {
+                        client.end("<![CDATA[<resposta><retorno>3</retorno></resposta>]]>");
+                        callback(err,null)
+                    }
 
                     xsdDoc = x.parseXmlString(data);
                     xmlDoc = x.parseXmlString(valor);
@@ -74,10 +78,7 @@ var server = net.createServer(function(client) {
 
                     console.log ("XML historico Validado? " + result);
                     //result = false;
-                    if(!result)
-                    {
-                        client.end("<![CDATA[<resposta><retorno>1</retorno></resposta>]]>");
-                    }
+                    if(!result) client.end("<![CDATA[<resposta><retorno>1</retorno></resposta>]]>");
 
                     parseString(valor, function(err, result)
                     {
@@ -117,6 +118,7 @@ var server = net.createServer(function(client) {
                     if (err)
                     {
                         client.end("<![CDATA[<resposta><retorno>0</retorno></resposta>]]>");
+                        return;
                         //callback(err,null)
                     }
 
