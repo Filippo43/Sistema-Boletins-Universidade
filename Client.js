@@ -169,7 +169,7 @@ var client = getConn('Node');
 
 var xmlHistoricoPath = "./XML/historico-ex.xml";
 
-/*var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
+var submeter = getSubmeter(xmlSubmeterPath,xmlHistoricoPath,function(err,data){
     if(err) console.log(err)
     else
        console.log(data);
@@ -177,16 +177,16 @@ var xmlHistoricoPath = "./XML/historico-ex.xml";
     client.write(data);
 
     return data;
-});*/
+});
 
-//var client = getConn('consulta');
+var clientconsulta = getConn('Java');
 
-var consulta = getConsulta(xmlConsultaPath, "00000000006", function(err,data){
+var consulta = getConsulta(xmlConsultaPath, "00000000005", function(err,data){
     if(err) console.log(err)
     else
     console.log(data);
     
-    client.write(data);
+    clientconsulta.write(data);
 
     return data;
 });
